@@ -13,15 +13,12 @@ export default class Header extends Component {
   }
   render() {
     return(
-      <View style = {{height:82}}>
+      <View style = {{height:82, flex: 1}}>
         <View style = {styles.header}>
           <Image source={require('../img/logos/mobile_logo.png')} style = {styles.imageStyle}/>
-          <View>
-            <Text style={styles.titleText}>{this.state.titleText}</Text>
-            <Text style={styles.bodyText}>{this.state.bodyText}</Text>
-            <Image source={require('../img/icons/padlock-white.png')} style = {styles.iconStyle}/>
-          </View>
-        </View>
+          <Text style={styles.titleText}>{this.state.titleText}{"\n"}<Text style={styles.bodyText}>{this.state.bodyText}</Text></Text>
+          <Image source={require('../img/icons/padlock-white.png')} style = {styles.iconStyle}/>
+      </View>
       </View>
     );
   }
@@ -30,9 +27,9 @@ export default class Header extends Component {
 const styles = StyleSheet.create({
   header:{
     backgroundColor:'#006a4d',
-    flex: 1,
     height: 82,
     flexDirection: 'row',
+    justifyContent: 'space-between',
   },
   imageStyle:{
     height: 42,
@@ -41,21 +38,30 @@ const styles = StyleSheet.create({
     width: 42,
   },
   iconStyle:{
+    alignItems: 'flex-end',
     height:20,
-    marginLeft: 20,
-    marginTop: 20,
+    marginRight: 30,
+    marginTop: 35,
     width:14,
   },
   titleText:{
     color:'#ffffff',
+    textAlign: 'right',
+    // fontFamily: 'sans-serif',
     fontSize:12,
     marginLeft: 5,
-    marginTop: 20,
+    marginRight: 20,
+    marginRight: -75,
+    marginTop: 30,
   },
   bodyText:{
+    textAlign: 'right',
     color:'#ffffff',
     fontSize:12,
+    fontStyle: 'italic',
     marginLeft: 5,
+    marginRight: 20,
+    marginRight: -75,
     marginTop: 2,
   }
 });
