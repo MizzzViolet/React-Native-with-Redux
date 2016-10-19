@@ -6,6 +6,10 @@ import {
 export default class Header extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      titleText: "Safe & Secure",
+      bodyText: "Internet Banking guarantee"
+    };
   }
   render() {
     return(
@@ -13,7 +17,8 @@ export default class Header extends Component {
         <View style = {styles.header}>
           <Image source={require('../img/logos/mobile_logo.png')} style = {styles.imageStyle}/>
           <View>
-            <Text>Safe & Secure</Text>
+            <Text style={styles.titleText}>{this.state.titleText}</Text>
+            <Text style={styles.bodyText}>{this.state.bodyText}</Text>
             <Image source={require('../img/icons/padlock-white.png')} style = {styles.iconStyle}/>
           </View>
         </View>
@@ -32,13 +37,25 @@ const styles = StyleSheet.create({
   imageStyle:{
     height: 42,
     marginLeft : 20,
-    marginTop:20,
+    marginTop: 20,
     width: 42,
   },
   iconStyle:{
     height:20,
-    marginLeft:20,
-    marginTop:20,
+    marginLeft: 20,
+    marginTop: 20,
     width:14,
+  },
+  titleText:{
+    color:'#ffffff',
+    fontSize:12,
+    marginLeft: 5,
+    marginTop: 20,
+  },
+  bodyText:{
+    color:'#ffffff',
+    fontSize:12,
+    marginLeft: 5,
+    marginTop: 2,
   }
 });
