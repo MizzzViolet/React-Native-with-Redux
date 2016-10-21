@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {
-  StyleSheet, Text, View, Image, TouchableHighlight, Platform
+  StyleSheet, Text, View, ScrollView, Image, TouchableHighlight, Platform
 } from 'react-native';
 
 export default class SecurityPAge extends Component {
@@ -18,6 +18,7 @@ export default class SecurityPAge extends Component {
   }
   render() {
     return(
+      <ScrollView>
       <View style = {styles.backgroundBody}>
         <View style = {styles.contentBody}>
           <View style={styles.backButton}>
@@ -26,22 +27,26 @@ export default class SecurityPAge extends Component {
           </View>
           <Text style={styles.titleText}>{this.state.titleText}{"\n"}</Text>
           <Text style={styles.textStyle}>
-            <Text style={styles.bodyText1}>{this.state.bodyBoldText}{"\n"}</Text>
+            <Text style={styles.bodyText1}>{"\n"}{this.state.bodyBoldText}{"\n"}</Text>
+            <Text style={styles.bodyText2}>{"\n"}{this.state.bodyText}{"\n"}</Text>
+            <Text style={styles.bodyText2}>{"\n"}{this.state.bodyText2}{"\n"}</Text>
+
           </Text>
           <View style={styles.list}>
             <Text style={styles.bulletPoint}>{'\u2022'}</Text>
-            <Text style={{marginLeft: 20, marginTop: -18}}>{this.state.listText}</Text>
+            <Text style={{marginLeft: 17, marginTop: -18}}>{this.state.listText}</Text>
           </View>
           <View style={styles.list}>
             <Text style={styles.bulletPoint}>{'\u2022'}</Text>
-            <Text style={{marginLeft: 20, marginTop: -18}}>{this.state.listText2}</Text>
+            <Text style={{marginLeft: 17, marginTop: -18}}>{this.state.listText2}</Text>
           </View>
           <View style={styles.list}>
             <Text style={styles.bulletPoint}>{'\u2022'}</Text>
-            <Text style={{marginLeft: 20, marginTop: -18}}>{this.state.listText3}</Text>
+            <Text style={{marginLeft: 17, marginTop: -18}}>{this.state.listText3}</Text>
           </View>
         </View>
       </View>
+    </ScrollView>
     );
   }
 }
@@ -61,7 +66,7 @@ const styles = StyleSheet.create({
   backButton:{
     flexDirection: 'row',
     marginTop: 35,
-    marginLeft: 20,
+    marginLeft: 17,
   },
   arrow:{
     marginRight: 7,
@@ -72,11 +77,12 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   textStyle:{
-    color:'#000000',
-    marginLeft: 20,
-    marginRight: 20,
+    color:'#333333',
+    marginLeft: 17,
+    marginRight: 17,
   },
   titleText:{
+    color:'#333333',
     fontSize: 30,
     fontWeight: 'bold',
     marginTop: 40,
@@ -88,19 +94,17 @@ const styles = StyleSheet.create({
     textAlign: 'left'
   },
   bodyText2:{
-    fontSize: 16,
+    fontSize: 15,
     fontWeight: 'normal',
     textAlign: 'left'
   },
   list:{
-    // flexDirection: 'row',
-    marginLeft: 20,
-    marginRight: 20,
+    marginLeft: 17,
+    marginRight: 17,
   },
   bulletPoint:{
     color:'#006A4D',
     fontSize: 20,
     padding:0,
-    // marginTop:-5
   }
 });

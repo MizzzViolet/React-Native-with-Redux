@@ -1,17 +1,23 @@
-import React from 'react'
+import React, {Component} from 'react';
 import PageHeader from './header/header'
+import PageBody from './body/body'
 import SecurityPage from './securityPage/securityPage'
 import Footer from './footer/footer'
 
 import {
-  View, StyleSheet
+  AppRegistry, View, StyleSheet, ScrollView
 } from 'react-native';
-const App = () => (
-  <View>
-    <PageHeader />
-    <SecurityPage />
-    <Footer />
-  </View>
-)
+export default class App extends Component {
+  render(){
+    return(
+      <ScrollView>
+        <PageHeader />
+        <PageBody />
+        <Footer />
+      </ScrollView>
+    );
+  }
+}
+// <SecurityPage />
 
-export default App
+AppRegistry.registerComponent('App', () => App);

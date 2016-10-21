@@ -9,25 +9,30 @@ export default class Body extends Component {
     this.state = {
       topTitleText: "You are applying for a Lloyds Classic Account",
       titleText: "Personalise your application",
-      bodyBoldText: "Our online and mobile banking guarantee",
-      bodyText:"We do all we can to protect you online. Even in the unlikely event of fraud, we promise you won't lose out. As a Lloyds Bank online banking customer, you automatically benefit from our online fraud guarantee: if you use our online service and become a victim of online fraud we guarantee you won't lose any money from your account, and will always be reimbursed in full.",
-      bodyText2: "For the vast majority of our customers this situation will never arise, especially if you take a few simple steps:"
-
+      headText: "Help us tailor your application by answering a few simple questions",
+      questionText1: "Do you already use Internet Banking with Lloyds Bank?",
+      questionText2:"Is this account just for you?",
+      questionText3: "Would you like to apply for an overdraft on this account?",
+      bottomeText: "If you would like to use the Current Account Switch Service, you'll be given the opportunity to switch at the end of this application."
     };
   }
   render() {
     return(
       <View style = {styles.backgroundBody}>
+        <Text style={styles.textStyles}>
+          <Text style={styles.topTitleText}>{"\n"}{"\n"}{this.state.topTitleText}{"\n"}</Text>
+          <Text style={styles.titleText}>{"\n"}{this.state.titleText}{"\n"}</Text>
+        </Text>
         <View style = {styles.contentBody}>
-          <View style={styles.backButton}>
-            <Image source={require('../img/icons/chevron-left-primary1.png')} style = {styles.arrow}/>
-            <Text style={styles.back}>Back</Text>
-          </View>
-          <Text style={styles.titleText}>{this.state.titleText}{"\n"}</Text>
           <Text style={styles.textStyle}>
-            <Text style={styles.bodyText1}>{"\n"}{this.state.bodyBoldText}{"\n\n"}</Text>
-            <Text style={styles.bodyText2}>{this.state.bodyText}{"\n\n"}</Text>
-            <Text style={styles.bodyText2}>{this.state.bodyText2}{"\n\n"}</Text>
+            <Text style={styles.bodyText1}>{"\n"}{this.state.headText}{"\n\n"}</Text>
+            <Text style={styles.bodyText2}>{this.state.questionText1}{"\n\n"}</Text>
+            <Text style={styles.radioButton}>Yes{"\n\n"}No{"\n\n"}</Text>
+            <Text style={styles.bodyText2}>{this.state.questionText2}{"\n\n"}</Text>
+            <Text style={styles.radioButton}>Yes{"\n\n"}No, I want a Joint Account{"\n\n"}</Text>
+            <Text style={styles.bodyText2}>{this.state.questionText3}{"\n\n"}</Text>
+            <Text style={styles.radioButton}>Yes{"\n\n"}No{"\n\n"}</Text>
+            <Text>{this.state.bottomeText}{"\n\n"}</Text>
           </Text>
         </View>
       </View>
@@ -47,38 +52,39 @@ const styles = StyleSheet.create({
     marginRight:10,
     marginBottom:10,
   },
-  backButton:{
-    flexDirection: 'row',
-    marginTop: 35,
-    marginLeft: 20,
-  },
-  arrow:{
-    marginRight: 7,
-    marginTop: 3,
-  },
-  back:{
-    color:'#006A4D',
-    fontWeight: 'bold',
+  textStyles:{
+    color:'#333333',
+    marginLeft: 25,
+    marginRight: 25,
   },
   textStyle:{
-    color:'#000000',
+    fontSize: 14,
+    color:'#333333',
     marginLeft: 20,
     marginRight: 20,
   },
+  topTitleText:{
+    fontSize: 14,
+    marginTop: 50,
+  },
   titleText:{
-    fontSize: 30,
+    fontSize: 31,
     fontWeight: 'bold',
     marginTop: 20,
-    textAlign: 'center'
   },
   bodyText1:{
-    fontSize: 14,
+    fontSize: 18,
     fontWeight: 'bold',
-    textAlign: 'left'
   },
   bodyText2:{
-    fontSize: 16,
-    fontWeight: 'normal',
-    textAlign: 'left'
+    fontWeight: 'bold',
+  },
+  radioButton:{
+    height: 24,
+      width: 24,
+      borderRadius: 12,
+      borderWidth: 2,
+      borderColor: '#000',
   }
+
 });
