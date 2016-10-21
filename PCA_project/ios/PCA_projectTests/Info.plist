@@ -18,6 +18,11 @@
 	<string>1.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>llyods_bank_jack-lightWEB.woff</string>
+		<string>llyods_bank_jack-regularWEB.woff</string>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 </dict>
