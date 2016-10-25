@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import PageHeader from './header/header'
 import PageBody from './body/body'
 import SecurityPage from './securityPage/securityPage'
+import HelpBox from './helpBox/helpBox'
 import Footer from './footer/footer'
 
 import {
@@ -13,11 +14,11 @@ export default class App extends Component {
       <ScrollView>
         <PageHeader />
         <PageBody />
+        <HelpBox />
         <Footer />
       </ScrollView>
     );
   }
 }
-// <SecurityPage />
 
 AppRegistry.registerComponent('App', () => App);

@@ -21,7 +21,7 @@ export default class Header extends Component {
               <Image source={require('../img/logos/mobile_logo.png')} style = {styles.imageStyle}/>
               <TouchableHighlight style={{marginLeft:105}} onPress={() => Linking.openURL('http://www.lloydsbank.com/legal.asp')}>
                 <View style={{flexDirection:'row'}}>
-                  <Text style={styles.titleText}>{this.state.titleText}{"\n"}<Text style={styles.bodyText}>{this.state.bodyText}</Text></Text>
+                  <Text style={[styles.titleText, {fontFamily:'lloyds_bank_jack-regularWEB'}]}>{this.state.titleText}{"\n"}<Text style={styles.bodyText}>{this.state.bodyText}</Text></Text>
                   <Image source={require('../img/icons/padlock-white.png')} style = {styles.iconStyle}/>
                 </View>
             </TouchableHighlight>
