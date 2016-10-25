@@ -1,8 +1,18 @@
 import React, {Component} from 'react';
+import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 import {
-  StyleSheet, Text, View, Image, TouchableHighlight, Platform
+  StyleSheet, Text, View, WebView, TouchableWithoutFeedback, Image, TouchableHighlight, Platform
 } from 'react-native';
+import Hr from 'react-native-hr'
 
+var radio_props = [
+  {label: 'Yes', value: 0 },
+  {label: 'No', value: 1 }
+];
+var radio_props2 = [
+  {label: 'Yes', value: 0 },
+  {label: 'No, I want a Joint Account', value: 1 }
+];
 export default class Body extends Component {
   constructor(props) {
     super(props);
@@ -13,27 +23,35 @@ export default class Body extends Component {
       questionText1: "Do you already use Internet Banking with Lloyds Bank?",
       questionText2:"Is this account just for you?",
       questionText3: "Would you like to apply for an overdraft on this account?",
-      bottomeText: "If you would like to use the Current Account Switch Service, you'll be given the opportunity to switch at the end of this application."
+      bottomText: "If you would like to use the Current Account Switch Service, you'll be given the opportunity to switch at the end of this application."
     };
+
   }
   render() {
+    var html = '<form action=""><input type="radio" value="Yes"/></form>';
     return(
       <View style = {styles.backgroundBody}>
-        <Text style={styles.textStyles}>
+        <Text style={[styles.textStyles, {color:'#333'}]}>
           <Text style={styles.topTitleText}>{"\n"}{"\n"}{this.state.topTitleText}{"\n"}</Text>
           <Text style={styles.titleText}>{"\n"}{this.state.titleText}{"\n"}</Text>
         </Text>
         <View style = {styles.contentBody}>
-          <Text style={styles.textStyle}>
-            <Text style={styles.bodyText1}>{"\n"}{this.state.headText}{"\n\n"}</Text>
-            <Text style={styles.bodyText2}>{this.state.questionText1}{"\n\n"}</Text>
-            <Text style={styles.radioButton}>Yes{"\n\n"}No{"\n\n"}</Text>
-            <Text style={styles.bodyText2}>{this.state.questionText2}{"\n\n"}</Text>
-            <Text style={styles.radioButton}>Yes{"\n\n"}No, I want a Joint Account{"\n\n"}</Text>
-            <Text style={styles.bodyText2}>{this.state.questionText3}{"\n\n"}</Text>
-            <Text style={styles.radioButton}>Yes{"\n\n"}No{"\n\n"}</Text>
-            <Text>{this.state.bottomeText}{"\n\n"}</Text>
-          </Text>
+          <Text style={[styles.bodyText1,styles.textStyles]}>{"\n"}{this.state.headText}{"\n"}</Text>
+          <Text style={[styles.bodyText2,styles.textStyles]}>{"\n"}{this.state.questionText1}{"\n"}</Text>
+          <RadioForm style={styles.textStyles} borderWidth={0.5} buttonColor={'#cccccc'} buttonInnerColor={'#649C00'} buttonOuterColor={'#ccc'} radio_props={radio_props} initial={3} borderWidth={5} onPress={(value) => {this.setState({value:value})}}/>
+          <Text style={[styles.bodyText2,styles.textStyles]}>{"\n"}{this.state.questionText2}{"\n"}</Text>
+          <RadioForm style={styles.textStyles} borderWidth={0.5} buttonColor={'#cccccc'} buttonInnerColor={'#649C00'} buttonOuterColor={'#ccc'} radio_props={radio_props2} initial={3} borderWidth={5} onPress={(value) => {this.setState({value:value})}}/>
+          <Text style={[styles.bodyText2,styles.textStyles]}>{"\n"}{this.state.questionText3}{"\n"}</Text>
+          <RadioForm style={styles.textStyles} borderWidth={0.5} buttonColor={'#cccccc'} buttonInnerColor={'#649C00'} buttonOuterColor={'#ccc'} radio_props={radio_props} initial={3} borderWidth={5} onPress={(value) => {this.setState({value:value})}}/>
+          <Text style={[styles.textStyles, {color:'#333'}]}>{"\n"}{this.state.bottomText}{"\n"}</Text>
+          <Image source={require('../img/logos/switch_guarantee_logo.png')} style={{marginLeft: 25,marginRight: 25,marginBottom:20}} />
+          <Hr lineColor='#ccc' />
+          <TouchableHighlight style={[styles.buttons,{backgroundColor:'#006a4d'}]} onPress={() => Linking.openURL('http://www.lloydsbank.com/legal.asp')}>
+            <Text style={[styles.commonText, styles.continueText]}>Continue</Text>
+          </TouchableHighlight>
+          <TouchableHighlight style={[styles.buttons, {marginBottom:30}]} onPress={() => Linking.openURL('http://www.lloydsbank.com')}>
+            <Text style={[styles.commonText, styles.cancelText]}>Cancel</Text>
+          </TouchableHighlight>
         </View>
       </View>
     );
@@ -53,13 +71,6 @@ const styles = StyleSheet.create({
     marginBottom:10,
   },
   textStyles:{
-    color:'#333333',
-    marginLeft: 25,
-    marginRight: 25,
-  },
-  textStyle:{
-    fontSize: 14,
-    color:'#333333',
     marginLeft: 20,
     marginRight: 20,
   },
@@ -73,18 +84,39 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   bodyText1:{
+    color:'#333',
     fontSize: 18,
     fontWeight: 'bold',
   },
   bodyText2:{
+    color:'#333',
     fontWeight: 'bold',
   },
   radioButton:{
     height: 24,
-      width: 24,
-      borderRadius: 12,
-      borderWidth: 2,
-      borderColor: '#000',
+    width: 24,
+    borderRadius: 50,
+    borderWidth: 2,
+  },
+  cancelText:{
+    color:'#006a4d',
+    fontSize: 22
+  },
+  buttons:{
+    alignItems:'center',
+    marginLeft:20,
+    marginRight:20,
+    marginTop:35,
+  },
+  commonText:{
+    fontWeight: 'bold',
+    marginTop:22,
+    marginBottom:22,
+    textAlign:'center'
+  },
+  continueText:{
+    color:'#fff',
+    fontSize: 18
   }
 
 });
